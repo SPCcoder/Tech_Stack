@@ -1,9 +1,30 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import {FlatList} from 'react-native';
+import {connect} from 'react-redux';
+import ListItem from './ListItem';
 
 class LibraryList extends Component {
+    renderItem(library) {
+        return <ListItem library={library} />;
+    }
+
     render() {
-        return;
+        return(
+            <FlatList
+            data={this.props.libraries}
+            renderItem={this.renderItem}
+            keyExtractor={library => library.id.toString()}
+            />
+        );
     }
 }
 
-export default LibraryList;
+const mapStateToProps = state => {
+    return {libraries: state.libraries};
+};
+
+export default connect(mapStateToProps)(LibraryList);
+/* The above line does the following:
+ calls function 'connect' which returns a function,
+which we then immediately call passing in LibraryList
+*/

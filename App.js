@@ -12,6 +12,7 @@ import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 import reducers from './src/reducers';
 import {MyHeader} from './src/components/common';
+import LibraryList from './src/components/LibraryList';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -25,29 +26,12 @@ export default class App extends Component<Props> {
   render() {
     return (
       <Provider store={createStore(reducers)}>
-      <View>
+      <View style={{flex: 1}}>
       <MyHeader headerText="Tech Stack" />
+      <LibraryList />
         </View>
       </Provider>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
