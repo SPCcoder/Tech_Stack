@@ -5,6 +5,7 @@ import ListItem from './ListItem';
 
 class LibraryList extends Component {
     renderItem(library) {
+
         return <ListItem library={library} />;
     }
 
